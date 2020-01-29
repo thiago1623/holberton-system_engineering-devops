@@ -1,2 +1,2 @@
-#!/bin/barh
+#!/bin/bash
 rmdir /tmp/holberton

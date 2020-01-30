@@ -3,7 +3,7 @@
 .B holberton
 - become a full-stack software engineer.
 .SH SYNOPSIS
-holberton [studentname]
+holberton [STUDENTNAME]
 .SH DESCRIPTION
 Holberton School is a project-based alternative to college for the next generation of software engineers.
 .SH OPTIONS

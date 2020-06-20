@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# This script is displaying "Holberton School" 10 times
-#!/usr/bin/env bash
 #Prints Holberton School to stdout 10 times with a while loop.
 count=1
 word="Holberton School"

@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-#Prints Holberton School to stdout 10 times with a while loop.
-count=1
+# This script is print the line "Holberton School" 10 times
+a=1
 word="Holberton School"
-while [ $count -lt 10 ];
-do
+while [ $a -le 10 ]; do
     echo "$word"
-    count=$(( count + 1 ))
+    a=$(( a + 1 ))
 done

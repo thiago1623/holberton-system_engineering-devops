@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script is displaying "Holberton School" 10 times
+#!/usr/bin/env bash
+#Prints Holberton School to stdout 10 times with a while loop.
+count=0
+word="Holberton School"
+until [ $count -gt 9 ];
+do
+    echo "$word"
+    ((count++))
+done

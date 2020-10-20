@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# infinite loop
-while :; do
-	trap "echo I am invincible!!!" SIGTERM
-	echo To infinity and beyond
-	sleep 2
-done

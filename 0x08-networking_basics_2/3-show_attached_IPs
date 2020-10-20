@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Show attached IP's
-ip -4 -br addr | rev | cut -d " " -f 2 | rev | cut -d "/" -f 1

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# This script is print the line "Holberton School" 10 times
-a=1
-word="Holberton School"
-while [ $a -le 10 ]; do
-    echo "$word"
-    a=$(( a + 1 ))
-done

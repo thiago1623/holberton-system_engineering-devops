@@ -1,0 +1,4 @@
+# ssh config
+Host 35.231.44.126
+Identityfile ~/.ssh/holberton
+PasswordAuthentication no

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Connect to virtual machine script
+ssh -i ~/.ssh/holberton ubuntu@35.231.44.126

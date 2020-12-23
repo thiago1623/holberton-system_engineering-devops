@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
-# Fix nginx to listen to port 80
-sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
-service nginx start
+# Fixes server
+pkill apache2
+sed -i -e 's#listen 80#listen 8080#' -e 's#listen \[::\]:80#listen \[::\]:8080#' /etc/nginx/sites-available/default
+chown -R nginx:nginx /etc/nginx/
+sed -i -e 's|#user www-data|user nginx|' /etc/nginx/nginx.conf
+service nginx restart

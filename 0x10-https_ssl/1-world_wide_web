@@ -9,9 +9,9 @@ dinfo () {
 }
 if [ $# -eq 1 ]; then
     dinfo "$1" "www"
-    dinfo "$1" "1636-lb-01"
-    dinfo "$1" "1636-web-01"
-    dinfo "$1" "1636-web-02"
+    dinfo "$1" "lb-01"
+    dinfo "$1" "web-01"
+    dinfo "$1" "web-02"
 else
     dinfo "$1" "$2"
 fi

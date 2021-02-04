@@ -1,32 +1,30 @@
 #!/usr/bin/python3
+""" Module for displaying all hot list entries in a specified subreddit """
 import requests
 
 
-def recurse(subreddit, hot_list=[], after=""):
+def recurse(subreddit, hot_list=[], after=''):
     """
-    GET all titles of hot articles for a given subreddit.
-    Store results in hot_list provided as default to method.
-    Requires recursive request stores.
+        Recursively displays all hot list entries in a subreddit
     """
-    if (after is None):
-        return hot_list
+    url = 'https://www.reddit.com/r/{}/hot.json?after={}'.format(
+        subreddit, after)
+    header = {'User-Agent': 'thiago'}
 
-    if (len(hot_list) == 0):
-        url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    req = requests.get(url, headers=header, allow_redirects=False)
+    if req.status_code == 200:
+        req = req.json()
+        data = req.get('data')
+        children = data.get('children')
+        for post in children:
+            post_data = post.get('data')
+            title = post_data.get('title')
+            hot_list.append(title)
+        after = data.get('after')
+
+        if after is None:
+            return hot_list
+        else:
+            return recurse(subreddit, hot_list, after)
     else:
-        url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
-            subreddit, after)
-    headers = {'user-agent': 'philsrequest'}
-
-    r = requests.get(url, headers=headers)
-    if (r.status_code is 404):
         return None
-    elif 'data' not in r.json():
-        return None
-    else:
-        r = r.json()
-        for post in r['data']['children']:
-            hot_list.append(post['data']['title'])
-
-    after = r['data']['after']
-    return recurse(subreddit, hot_list, after)

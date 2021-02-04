@@ -1,18 +1,19 @@
 #!/usr/bin/python3
+""" Contains the number_of_subscribers function """
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """ GET subscriber count of a given subreddit """
-    url = "http://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {'user-agent': 'thiagorequest'}
-    r = requests.get(url, headers=headers)
-    if (r.status_code is 302 or r.status_code is 404):
-        return 0
-    r = r.json()
-    if ('error' in r):
-        return 0
-    elif ('subscribers' in r['data']):
-        return r['data']['subscribers']
-    else:
-        return 0
+    """
+        Returns the number of subscribers to a specified subreddit
+    """
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    user_agent = {'User-Agent': 'thiago'}
+    req = requests.get(url, headers=user_agent, allow_redirects=False)
+    if req.status_code == 200:
+        req = req.json()
+        data = req.get('data')
+        subscribers = data.get('subscribers')
+        if data is not None and subscribers is not None:
+            return subscribers
+    return 0
